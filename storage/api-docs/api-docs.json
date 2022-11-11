@@ -1,0 +1,243 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Test API",
+        "description": "API documentation for Returns Service App",
+        "contact": {
+            "email": "crocusik@mail.ru"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://test-api.my/api/v1",
+            "description": "Returns App API"
+        }
+    ],
+    "paths": {
+        "/": {},
+        "/notebook": {
+            "get": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "1.1. GET /api/v1/notebook",
+                "operationId": "d8aed0f9e7db04a67d079ee6666225ee",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "The page number",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "fullName": {
+                                            "type": "string",
+                                            "example": "Kolesnik Igor Leonidovic"
+                                        },
+                                        "companyName": {
+                                            "type": "string",
+                                            "example": "Apple"
+                                        },
+                                        "telephoneNumber": {
+                                            "type": "string",
+                                            "example": "89001980807"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "crocusik@mail.ru"
+                                        },
+                                        "dateOfBirth": {
+                                            "type": "string",
+                                            "example": "1986-02-08"
+                                        },
+                                        "photo": {
+                                            "type": "string",
+                                            "example": "/user/upload/file.jpg"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "1.2 POST /api/v1/notebook",
+                "operationId": "77881e787aad12a97e4e0bd62d38974b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NotebookRequestTest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Everything is fine"
+                    }
+                }
+            }
+        },
+        "/notebook/{id}": {
+            "get": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "1.3. GET /api/v1/notebook/<id>/",
+                "operationId": "5f6f3f108bf5088d0c2d2e52313f50b6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id employee",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "1.4 POST /api/v1/notebook/<id>/",
+                "operationId": "ddbaf17966c540604ff3223ad81cd41e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id employe update",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NotebookRequestTest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Everything is fine"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "1.5. DELETE /api/v1/notebook/<id>/",
+                "operationId": "9f3f900f367f739587dd25ee4b8ae894",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string",
+                                            "example": "delete Notebook success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "NotebookRequestTest": {
+                "title": "Test Notebook JSON request",
+                "description": "this object is transferred in Swagger",
+                "properties": {
+                    "full_name": {
+                        "title": "full_name",
+                        "description": "surname name patronymic of the employee",
+                        "type": "string",
+                        "example": "Kolesnik Igor Leonidovic"
+                    },
+                    "company_name": {
+                        "title": "company_name",
+                        "description": "Company name",
+                        "type": "string",
+                        "example": "Apple"
+                    },
+                    "telephone_number": {
+                        "title": "telephone_number",
+                        "description": "Telephone number employee",
+                        "type": "string",
+                        "example": "+79001980807"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email employee",
+                        "type": "string",
+                        "example": "crocusikil@mail.ru"
+                    },
+                    "date_of_birth": {
+                        "title": "date_of_birth",
+                        "description": "date of birth employee",
+                        "example": "1972-02-09"
+                    },
+                    "photo": {
+                        "title": "photo",
+                        "description": "dphoto employee",
+                        "type": "string",
+                        "example": "/upload/user_photo.jpg"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
